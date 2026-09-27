@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roundtable API</title>
+    <style>
+      body { font-family: sans-serif; padding: 20px;}
+      code, pre { background: #f2f2f2; padding: 2px 6px; border-radius: 4px; }
+      pre { padding: 10px; overflow-x: auto; }
+      h2 { margin-top: 28px; }
+    </style>
+  </head>
+  <body>
+    <h1>Roundtable API</h1>
+    <p>All responses are JSON. Errors look like <code>{ "error": "message" }</code>.</p>
+
+    <h2>GET /users</h2>
+    <p>Returns all users. 404 if there are none.</p>
+
+    <h2>POST /users</h2>
+    <p>Adds a user. <code>rating</code> must be 1-5.</p>
+    <pre>{ "name": "Alex", "rating": 4 }</pre>
+
+    <h2>GET /categories</h2>
+    <p>Returns all categories. 404 if there are none.</p>
+
+    <h2>GET /recipes</h2>
+    <p>Returns all recipes, newest first. 404 if there are none.</p>
+
+    <h2>GET /recipes/:id</h2>
+    <p>Returns one recipe by ID, e.g. <code>/recipes/1</code>. 404 if not found.</p>
+
+    <h2>POST /recipes</h2>
+    <p>Adds a recipe. <code>image</code>, <code>difficulty</code> (defaults to "easy") and <code>time</code> are optional.</p>
+    <pre>{
+    "user_id": 1,
+    "category_id": 1,
+    "title": "Pancakes",
+    "ingredients": ["Flour", "Milk", "Eggs"],
+    "instructions": "Mix and fry.",
+    "image": "https://example.com/pancakes.jpg",
+    "difficulty": "easy",
+    "time": "20 minutes"
+  }</pre>
+  </body>
+</html>

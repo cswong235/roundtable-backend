@@ -1,4 +1,5 @@
 let express = require('express');
+let path = require('path');
 let app = express();
 
 const { Pool } = require('pg');
@@ -12,6 +13,11 @@ const pool = new Pool({
 
 app.use(cors());
 app.use(express.json());
+
+// Default route
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname + '/index.html'));
+})
 
 // Fetch all users
 app.get("/users", async (req, res) => {
