@@ -104,7 +104,7 @@ app.post("/recipes", async (req, res) => {
 app.get("/recipes", async (req, res) => {
     try{
         const result = await pool.query(`
-            SELECT *, u.name AS chef_name, u.rating AS chef_rating, c.name AS category_name 
+            SELECT r.*, u.name AS chef_name, u.rating AS chef_rating, c.name AS category_name
             FROM recipes r
             JOIN users u ON r.user_id = u.id
             JOIN categories c ON r.category_id = c.id
@@ -125,7 +125,7 @@ app.get("/recipes/:id", async (req, res) => {
     const { id } = req.params;
     try{
         const result = await pool.query(`
-            SELECT *, u.name AS chef_name, u.rating AS chef_rating, c.name AS category_name
+            SELECT r.*, u.name AS chef_name, u.rating AS chef_rating, c.name AS category_name
             FROM recipes r
             JOIN users u ON r.user_id = u.id
             JOIN categories c ON r.category_id = c.id
